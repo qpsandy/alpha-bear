@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>债券业务平台</title>
+	<link rel="stylesheet" type="text/css" href="./css/base.css">
+</head>
+<body>
+	<div class="cont" id="cont">
+		<div><img src="./img/wait-img.png"></div>
+		<div class="loading-bar">
+			<div class="default-bar"></div>
+			<div class="fill-bar" id="fillBar"></div>
+		</div>
+		<div class="check-text">loading</div>
+	</div>
+	<script type="text/javascript" src="./js/jquery-1.11.1.min.js"></script>
+	<script type="text/javascript">
+	function queryURL(name) {
+	    var reg = new RegExp('(^|&)'+name+'=([^&]*)(&|$)', 'i');
+	    var r = window.location.search.substr(1).match(reg);
+	    if (r != null) return decodeURI(r[2]);
+	    return null;
+	}
+     $(function() {
+     	clearInterval(timer);
+     	var timer = setInterval(function(){
+             $('#fillBar').animate({
+     		    width: '530px'
+     	        },2000, function() {
+     		    $('#fillBar').css({
+     		    	width: '0'
+     		    });
+     	   });
+     	}, 10)
+     	loginEkey();
+     	function loginEkey(){
+     		var ssl_cert = queryURL('ssl_cert')||'';
+     		
+     		//登录
+			$.ajax({
+				url: '/bond/api/uums/login',
+				type: 'post',
+				dataType: 'json',
+				data: {"username":"ssl_cert#"+ssl_cert,"password":ssl_cert}
+			})
+			.done(function(data) {
+				//console.log(data);
+				if(data.results == "true"){
+					window.location.href = './ebondSystemsList.html';
+				} else if(data.results == "false"){
+					$('#cont').html('<div><img src="./img/sorry-again.png"></div><div class="check-text">请检查ekey，点击刷新......</div><div class="btn-refresh"><a href="javascript:;" id="refreshBtn">刷  新</a></div>')
+				}
+			})
+			.fail(function() {
+				//console.log("error");
+			});
+     	}
+		
+		$('body').on('click', '#refreshBtn', function(){
+			location.reload()
+		})
+		
+     });
+	</script>
+</body>
+</html>

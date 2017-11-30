@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<assembly>
+	<id>bond-web</id>
+	<formats>
+		<format>tar.gz</format>
+	</formats>
+	<fileSets>
+		<fileSet>
+			<directory>${project.basedir}</directory>
+			<excludes>
+				<exclude>*.xml</exclude>
+				<exclude>.project</exclude>
+				<exclude>docker</exclude>
+				<exclude>docker/*</exclude>
+				<exclude>docker/*/*</exclude>
+				<exclude>target</exclude>
+				<exclude>target/*</exclude>
+				<exclude>target/*/*</exclude>
+			</excludes>
+		</fileSet>
+		<fileSet>
+			<directory>${project.basedir}</directory>
+			<includes>
+				<include>docker/conf/*</include>
+				<include>docker/start-nginx.sh</include>
+				<include>src/*</include>
+			</includes>
+		</fileSet>
+	</fileSets>
+</assembly>
