@@ -1,4 +1,4 @@
-package org.bear.service;
+package com.haah.bear;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
