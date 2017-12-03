@@ -6,13 +6,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.haah.bear.pojo.LoginPojo;
+import com.haah.bear.pojo.Result;
 
 @RestController
 @RequestMapping("user/")
 public class UserController {
 
 	@RequestMapping(path = "/login", method = RequestMethod.POST)
-   	String login(@RequestBody LoginPojo lp) {
-		return "Success";
+   	public Result login(@RequestBody LoginPojo lp) {
+		return new Result(true);
    	}
 }

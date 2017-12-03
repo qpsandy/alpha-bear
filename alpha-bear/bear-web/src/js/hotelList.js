@@ -9,42 +9,23 @@ function encryptByDES(message, key) {
 $(function() {
 	var arr = [];
 	$.ajax({
-		url: '/bond/api/uums/userinfo/apps',
-		type: 'post',
-		dataType: 'json',
-		data: JSON.stringify([{"guid":"BM_BOSS_WEB"}]),
-		contentType: 'application/json'
+		url: '/bear/hotel/',
+		type: 'get'
 	})
 	.done(function(data) {
 		//console.log(data);
 		arr = data;
-		var arrList = [],
-		    config = {
-				"BM_OMS_WEB":"期权业务办理专区向期权经纪、自营和做市业务参与人提供业务开通、账户新增取消、持仓额度调整、合约品种变更等业务办理和审批",
-				"BM_FMS_WEB":"基金业务办理专区向基金公司提供旗下各类场内基金产品的信息披露及发行、上市、停牌、退市、更名、分红等业务办理申请和审批"
-		       }
-		//只有一个应用，并且需要输入用户密码
-		if(arr.length == 1 && +arr[0].ekeyOnly == 1){
-			showUserPaswordDialog(arr[0]);
-		} else if(arr.length == 1 && +arr[0].ekeyOnly == 0){
-			//只有一个应用，并且该应用不需要输入用户名密码
-			directLogin(arr[0], true);
-		} else if(arr.length > 1) {
-			//有多个应用时，必须列出这些 应用
-			for(var i=0; i<arr.length; i++){
-				//str += '<li><a data-href="'+arr[i].bizUrl+'" data-guid="'+arr[i].guid+'" href="javascript:;">'+arr[i].name+'</a></li>';
-				var str = '<li>\
-				            <div class="product-title"><a href="javascript:;" data-href="'+arr[i].bizUrl+'" data-guid="'+arr[i].guid+'" data-ekeyOnly="'+arr[i].ekeyOnly+'">'+arr[i].name+'</a></div>\
-				            <div class="product-descriptive">'+config[arr[i].guid]+'</div>\
-				            <div class="product-btn"><a href="javascript:;" data-href="'+arr[i].bizUrl+'" data-guid="'+arr[i].guid+'" data-ekeyOnly="'+arr[i].ekeyOnly+'">点击进入</a></div>\
-				        </li>'
-				arrList.push(str);
-			}
-			$('#BMOMSWEB').html(arrList.join(''));
-			$('#div1').show();$('#div2').hide();
-		} else {
-			window.location = './login.html';
+		var arrList = [];
+		//有多个应用时，必须列出这些 应用
+		for(var i=0; i<arr.length; i++){
+			//str += '<li><a data-href="'+arr[i].bizUrl+'" data-guid="'+arr[i].guid+'" href="javascript:;">'+arr[i].name+'</a></li>';
+			var str = '<li>\
+				        <div class="product-title"><a href="javascript:;" data-href="'+arr[i].hotelname+'">'+arr[i].name+'</a></div>\
+				       </li>'
+			arrList.push(str);
 		}
+		$('#BMOMSWEB').html(arrList.join(''));
+		$('#div1').show();$('#div2').hide();
 	})
 	.fail(function() {
 		//console.log("error");

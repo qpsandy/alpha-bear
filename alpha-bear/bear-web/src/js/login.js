@@ -30,19 +30,20 @@ $(function() {
 			url: '/bear/user/login',
 			type: 'post',
 			dataType: 'json',
-			data: {"username":username,"password":password}
+			data: JSON.stringify({"username":username,"password":password}),
+			contentType: 'application/json'
 		})
 		.done(function(data) {
-			//console.log(data);
-			if(data.results == "true"){
+			console.log(data);
+			if(data.success == true){
 				$('#errorEmpty').css({'visibility': 'hidden'});
-				window.location.href = './bondSystemsList.html';
-			} else if(data.results == "false"){
+				window.location.href = './hotelList.html';
+			} else {
 				$('#errorEmpty').css({'visibility': 'visible'}).html("!用户或者密码错误，请重新输入");
 			}
 		})
 		.fail(function() {
-			//console.log("error");
+			console.log("error");
 		});
 	})
 });
