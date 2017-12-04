@@ -1,0 +1,56 @@
+server:
+  port: ${APP_PORT:10002}
+
+jdbc:
+  server: ${JDBC_SERVER_IP:127.0.0.1}
+  port: ${JDBC_SERVER_PORT:3306}
+  database: ${JDBC_DATABASE_NAME:boss}
+  url: jdbc:mysql://${jdbc.server}:${jdbc.port}/${jdbc.database}?useUnicode=true&characterEncoding=utf-8
+  driverClassName: ${JDBC_DRIVER_CLASS_NAME:com.mysql.jdbc.Driver}
+  username: ${JDBC_USERNAME:bear}
+  password: ${JDBC_PASSWORD:bear}
+  maxWait: ${JDBC_MAX_WAIT:10000}
+  initialSize: ${JDBC_SLAVE_INITIALSIZE:1}
+  minIdle: ${JDBC_SLAVE_MINIDLE:1}
+  maxActive: ${JDBC_MAX_ACTIVE:2000}
+  logAbandoned: ${JDBC_LOG_ABANDONED:true}
+  removeAbandoned: ${JDBC_REMOVE_ABANDONED:true}
+  removeAbandonedTimeout: ${JDBC_REMOVE_ABANDONED_TIMEOUT:5000}
+  timeBetweenEvictionRunMillis: ${JDBC_SLAVE_TIMEBETWEENEVICTIONRUNMILLIS:60000}
+  minEvictableIdleTimeMillis: ${JDBC_SLAVE_MINEVICTABLEIDLETIMEMILLIS:300000}
+  validationQuery: ${JDBC_SLAVE_VALIDATIONQUERY:SELECT 'x'}
+  testWhileIdle: ${JDBC_SLAVE_TESTWHILEIDLE:true}
+  testOnBorrow: ${JDBC_SLAVE_TESTONBORROW:false}
+  testOnReturn: ${JDBC_SLAVE_TESTONRETURN:false}
+  poolPreparedStatements: ${JDBC_SLAVE_POOLPREPAREDSTATEMENTS:false}
+  maxPoolPreparedStatementPerConnectionSize: ${JDBC_SLAVE_MAXPOOLPREPAREDSTATEMENTPERCONNECTIONSIZE:20}
+  filters: ${JDBC_SLAVE_FILTERS:stat}
+  slave:
+    server: ${JDBC_SLAVE_SERVER_IP:${jdbc.server}}
+    port: ${JDBC_SLAVE_SERVER_PORT:${jdbc.port}}
+    database: ${JDBC_SLAVE_DATABASE_NAME:${jdbc.database}}
+    url: jdbc:mysql://${jdbc.slave.server}:${jdbc.slave.port}/${jdbc.slave.database}?useUnicode=true&characterEncoding=utf-8
+    driverClassName: ${JDBC_SLAVE_DRIVER_CLASS_NAME:com.mysql.jdbc.Driver}
+    username: ${JDBC_SLAVE_USERNAME:${jdbc.username}}
+    password: ${JDBC_SLAVE_PASSWORD:${jdbc.password}}
+    maxWait: ${JDBC_SLAVE_MAX_WAIT:10000}
+    initialSize: ${JDBC_SLAVE_INITIALSIZE:1}
+    minIdle: ${JDBC_SLAVE_MINIDLE:1}
+    maxActive: ${JDBC_SLAVE_MAX_ACTIVE:500}
+    logAbandoned: ${JDBC_SLAVE_LOG_ABANDONED:true}
+    removeAbandoned: ${JDBC_SLAVE_REMOVE_ABANDONED:true}
+    removeAbandonedTimeout: ${JDBC_SLAVE_REMOVE_ABANDONED_TIMEOUT:5000}
+    timeBetweenEvictionRunMillis: ${JDBC_SLAVE_TIMEBETWEENEVICTIONRUNMILLIS:60000}
+    minEvictableIdleTimeMillis: ${JDBC_SLAVE_MINEVICTABLEIDLETIMEMILLIS:300000}
+    validationQuery: ${JDBC_SLAVE_VALIDATIONQUERY:SELECT 'x'}
+    testWhileIdle: ${JDBC_SLAVE_TESTWHILEIDLE:true}
+    testOnBorrow: ${JDBC_SLAVE_TESTONBORROW:false}
+    testOnReturn: ${JDBC_SLAVE_TESTONRETURN:false}
+    poolPreparedStatements: ${JDBC_SLAVE_POOLPREPAREDSTATEMENTS:false}
+    maxPoolPreparedStatementPerConnectionSize: ${JDBC_SLAVE_MAXPOOLPREPAREDSTATEMENTPERCONNECTIONSIZE:20}
+    filters: ${JDBC_SLAVE_FILTERS:stat}
+
+
+mybatis:
+  configLocation: classpath:/mybatis-config.xml
+  mapperLocations: classpath:/bear/dao/*.xml

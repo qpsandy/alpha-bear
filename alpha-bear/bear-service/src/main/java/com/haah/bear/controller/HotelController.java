@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.haah.bear.db.HotelDb;
-import com.haah.bear.pojo.HotelPojo;
 
 @RestController
 @RequestMapping("hotel/")

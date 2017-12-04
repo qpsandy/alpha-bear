@@ -16,16 +16,25 @@ $(function() {
 		//console.log(data);
 		arr = data;
 		var arrList = [];
+		var head = '<tr>\
+						<th>酒店名称</th><th>酒店房型</th>\
+						<th>酒店早餐</th><th>酒店库存</th>\
+						<th>酒店价格</th><th>酒店价格变化</th>\
+						<th>更新时间</th>\
+					</tr>';
+		arrList.push(head);
 		//有多个应用时，必须列出这些 应用
 		for(var i=0; i<arr.length; i++){
 			//str += '<li><a data-href="'+arr[i].bizUrl+'" data-guid="'+arr[i].guid+'" href="javascript:;">'+arr[i].name+'</a></li>';
-			var str = '<li>\
-				        <div class="product-title"><a href="javascript:;" data-href="'+arr[i].hotelname+'">'+arr[i].name+'</a></div>\
-				       </li>'
+			var str = '<tr>\
+				        <td>'+arr[i].hotelname+'</td><td>'+arr[i].fx+'</td>\
+				        <td>'+arr[i].zc+'</td><td>'+arr[i].kc+'</td>\
+				        <td>'+arr[i].price+'</td><td>'+arr[i].price+'</td>\
+				        <td>'+arr[i].updatetime+'</td>\
+				       </tr>'
 			arrList.push(str);
 		}
 		$('#BMOMSWEB').html(arrList.join(''));
-		$('#div1').show();$('#div2').hide();
 	})
 	.fail(function() {
 		//console.log("error");
