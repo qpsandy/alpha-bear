@@ -1,10 +1,11 @@
-package sse.boss.db.feature.orm.mybatis;
+package com.bear.db.feature.orm.mybatis;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Properties;
+
 import org.apache.ibatis.executor.parameter.ParameterHandler;
 import org.apache.ibatis.executor.statement.StatementHandler;
 import org.apache.ibatis.mapping.BoundSql;
@@ -25,8 +26,8 @@ import org.apache.ibatis.session.RowBounds;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import sse.boss.db.feature.orm.dialect.AbstractDialect;
-import sse.boss.db.feature.orm.dialect.DialectFactory;
+import com.bear.db.feature.orm.dialect.AbstractDialect;
+import com.bear.db.feature.orm.dialect.DialectFactory;
 
 /**
  * @author StarZou

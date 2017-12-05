@@ -1,4 +1,4 @@
-package sse.boss.db.feature.orm.mybatis;
+package com.bear.db.feature.orm.mybatis;
 
 import java.util.ArrayList;
 import java.util.List;

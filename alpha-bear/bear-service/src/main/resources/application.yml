@@ -1,10 +1,14 @@
 server:
   port: ${APP_PORT:10002}
 
+spring:
+  application:
+    name: bear-service
+
 jdbc:
   server: ${JDBC_SERVER_IP:127.0.0.1}
   port: ${JDBC_SERVER_PORT:3306}
-  database: ${JDBC_DATABASE_NAME:boss}
+  database: ${JDBC_DATABASE_NAME:bear}
   url: jdbc:mysql://${jdbc.server}:${jdbc.port}/${jdbc.database}?useUnicode=true&characterEncoding=utf-8
   driverClassName: ${JDBC_DRIVER_CLASS_NAME:com.mysql.jdbc.Driver}
   username: ${JDBC_USERNAME:bear}
@@ -50,7 +54,6 @@ jdbc:
     maxPoolPreparedStatementPerConnectionSize: ${JDBC_SLAVE_MAXPOOLPREPAREDSTATEMENTPERCONNECTIONSIZE:20}
     filters: ${JDBC_SLAVE_FILTERS:stat}
 
-
 mybatis:
   configLocation: classpath:/mybatis-config.xml
-  mapperLocations: classpath:/bear/dao/*.xml
+  mapperLocations: classpath:/com/haah/bear/mapper/*.xml

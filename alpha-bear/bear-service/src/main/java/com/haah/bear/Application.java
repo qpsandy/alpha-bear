@@ -1,13 +1,13 @@
 package com.haah.bear;
 
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.ComponentScan;
 
-/**
- * Hello world!
- *
- */
 @SpringBootApplication
+@ComponentScan(basePackages = { "com.bear.db.config", "com.haah.bear"})
+@MapperScan("com.haah.bear.mapper.**")
 public class Application 
 {
 	public static void main(String[] args) {

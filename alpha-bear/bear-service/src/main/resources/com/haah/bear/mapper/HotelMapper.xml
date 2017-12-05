@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.haah.bear.mapper.HotelMapper">
+
+	<resultMap id="HotelMap" type="com.haah.bear.db.HotelDb">
+        <result column="poi_id" property="poiId" jdbcType="INTEGER"/>
+        <result column="hotelname" property="hotelname" jdbcType="VARCHAR"/>
+        <result column="fx" property="fx" jdbcType="VARCHAR"/>
+        <result column="zc" property="zc" jdbcType="VARCHAR"/>
+        <result column="kc" property="kc" jdbcType="VARCHAR"/>
+        <result column="price" property="price" jdbcType="VARCHAR"/>
+        <result column="priceChange" property="priceChange" jdbcType="VARCHAR"/>        
+        <result column="updatetime" property="updatetime" jdbcType="TIMESTAMP"/>  
+	</resultMap>
+
+	<select id="retrieveHotelByPage" parameterType="com.haah.bear.db.HotelDb" resultMap="HotelMap">
+		SELECT * FROM `hotel`
+		WHERE 1=1
+		<if test="hotelname != null and hotelname !='' ">
+			AND LOCATE(#{hotelname}, hotelname)
+		</if>
+		ORDER BY updatetime desc
+	</select>
+
+</mapper>

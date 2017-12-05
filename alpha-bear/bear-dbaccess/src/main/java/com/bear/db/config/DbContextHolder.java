@@ -6,7 +6,7 @@
  *#                                                                      #
  *########################################################################
 */
-package sse.boss.db.config;
+package com.bear.db.config;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

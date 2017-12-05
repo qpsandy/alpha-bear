@@ -6,7 +6,7 @@
  *#                                                                      #
  *########################################################################
 */
-package sse.boss.db.config;
+package com.bear.db.config;
 
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
@@ -24,11 +24,13 @@ import org.springframework.core.env.Environment;
 import org.springframework.core.io.DefaultResourceLoader;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
-import sse.boss.db.config.DbContextHolder.DbType;
+
+import com.bear.db.config.DbContextHolder.DbType;
 
 import javax.annotation.Resource;
 import javax.persistence.EntityManager;
 import javax.sql.DataSource;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;

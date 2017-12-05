@@ -6,7 +6,7 @@
  *#                                                                      #
  *########################################################################
 */
-package sse.boss.db.annotation;
+package com.bear.db.annotation;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

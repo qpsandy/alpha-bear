@@ -9,8 +9,11 @@ function encryptByDES(message, key) {
 $(function() {
 	var arr = [];
 	$.ajax({
-		url: '/bear/hotel/',
-		type: 'get'
+		url: '/bear/hotel/page',
+		type: 'post',
+		dataType: 'json',
+		data: '{"pageNo":1,"pageSize":10}',
+		contentType: 'application/json'
 	})
 	.done(function(data) {
 		//console.log(data);

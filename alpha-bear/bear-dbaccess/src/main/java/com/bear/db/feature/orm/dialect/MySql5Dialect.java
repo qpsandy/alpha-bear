@@ -1,4 +1,4 @@
-package sse.boss.db.feature.orm.dialect;
+package com.bear.db.feature.orm.dialect;
 
 /**
  * MySQL数据库方言

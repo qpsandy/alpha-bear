@@ -6,7 +6,7 @@
  *#                                                                      #
  *########################################################################
 */
-package sse.boss.db.interceptors;
+package com.bear.db.interceptors;
 
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
@@ -16,9 +16,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.core.Ordered;
 import org.springframework.stereotype.Component;
 
-import sse.boss.db.annotation.ReadOnlyConnection;
-import sse.boss.db.config.DbContextHolder;
-import sse.boss.db.config.DbContextHolder.DbType;
+import com.bear.db.annotation.ReadOnlyConnection;
+import com.bear.db.config.DbContextHolder;
+import com.bear.db.config.DbContextHolder.DbType;
 
 @Aspect
 @Component

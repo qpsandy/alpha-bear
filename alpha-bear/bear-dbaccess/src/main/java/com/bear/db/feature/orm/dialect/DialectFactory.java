@@ -1,4 +1,4 @@
-package sse.boss.db.feature.orm.dialect;
+package com.bear.db.feature.orm.dialect;
 
 import org.apache.ibatis.session.Configuration;
 

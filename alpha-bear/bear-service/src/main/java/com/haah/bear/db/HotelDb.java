@@ -1,10 +1,12 @@
 package com.haah.bear.db;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class HotelDb {
+public class HotelDb extends BaseDb implements Serializable {
+	private static final long serialVersionUID = 1L;
 	
-	private String poiId;
+	private int poiId;
 	private String hotelname;
 	private String fx;
 	private String zc;
@@ -13,22 +15,11 @@ public class HotelDb {
 	private String priceChange;
 	private Date updatetime;
 	
-	public HotelDb(String poiId, String hotelname, String fx, String zc,
-			String kc, String price, String priceChange, Date updatetime) {
-		super();
-		this.poiId = poiId;
-		this.hotelname = hotelname;
-		this.fx = fx;
-		this.zc = zc;
-		this.kc = kc;
-		this.price = price;
-		this.priceChange = priceChange;
-		this.updatetime = updatetime;
-	}
-	public String getPoiId() {
+	public int getPoiId() {
 		return poiId;
 	}
-	public void setPoiId(String poiId) {
+	
+	public void setPoiId(int poiId) {
 		this.poiId = poiId;
 	}
 	public String getHotelname() {
@@ -73,5 +64,6 @@ public class HotelDb {
 	public void setUpdatetime(Date updatetime) {
 		this.updatetime = updatetime;
 	}
+	
 
 }
