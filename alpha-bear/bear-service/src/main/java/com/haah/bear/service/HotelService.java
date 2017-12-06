@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.bear.db.feature.orm.mybatis.Page;
-import com.haah.bear.db.HotelDb;
+import com.haah.bear.core.model.db.HotelDb;
 import com.haah.bear.mapper.HotelMapper;
 
 @Service("hotelService")

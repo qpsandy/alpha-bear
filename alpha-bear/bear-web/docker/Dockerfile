@@ -1,5 +1,5 @@
 FROM  nginx:1.10
-copy bond-web.tar.gz /usr/share/nginx/bond-web.tar.gz
+copy bear-web.tar.gz /usr/share/nginx/bear-web.tar.gz
 WORKDIR /usr/share/nginx/
 RUN tar -zxvf bear-web.tar.gz
 RUN rm -rf bear-web.tar.gz

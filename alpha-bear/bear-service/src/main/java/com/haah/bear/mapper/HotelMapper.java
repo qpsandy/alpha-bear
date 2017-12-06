@@ -3,7 +3,7 @@ package com.haah.bear.mapper;
 import java.util.List;
 
 import com.bear.db.feature.orm.mybatis.Page;
-import com.haah.bear.db.HotelDb;
+import com.haah.bear.core.model.db.HotelDb;
 
 public interface HotelMapper {
 	

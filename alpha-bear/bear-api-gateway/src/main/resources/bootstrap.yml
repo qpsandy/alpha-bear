@@ -1,0 +1,55 @@
+spring:
+  application:
+    name: ${APP_NAME:boss-api-gateway}
+    instance_id: ${random.value}
+  cloud:
+    config:
+      discovery:
+        enabled: true
+        serviceId: ${CONFIG_SERVICE_NAME:BOSS-CONFIG-SERVER}
+  profiles:
+    active: ${PROFILE:dev}
+  session:
+    store-type: none
+
+eureka:
+  instance:
+    metadataMap:
+      instanceId: ${spring.application.name}:${spring.application.instance_id}
+    preferIpAddress: true
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    region: default
+    availabilityZones:
+      default: devZone
+    preferSameZone: false
+    serviceUrl:
+      devZone: ${SERVICE_URL:http://${BOSS_EUREKA_IP:127.0.0.1}:${BOSS_EUREKA_PORT:8761}/${registry.name:eureka}/}
+
+hystrix:
+  threadpool:
+    default:
+      coreSize: ${HYSTRIX_THREADPOOL_DEFAULT_CORESIZE:2000}
+      maxQueueSize: ${HYSTRIX_THREADPOOL_DEFAULT_MAXQUEUESIZE:1000}
+#      queueSizeRejectionThreshold: ${QUEUE_SIZE_REJECTION_THRESHOLD:200}
+  command:
+    default:
+      execution:
+        timeout: true
+        isolation:
+          strategy: THREAD
+          thread:
+            timeoutInMilliseconds: ${HYSTRIX_THREAD_TIMEOUTINMILLISECONDS:900000}
+ribbon:
+  ReadTimeout: ${RIBBON_READTIMEOUT:300000}
+  ConnectTimeout: ${RIBBON_CONNECTTIMEOUT:300000}
+
+
+security:
+  sessions: ALWAYS
+
+management:
+  security:
+    roles: ROLE_ADMIN
+

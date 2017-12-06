@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.bear.db.feature.orm.mybatis.Page;
-import com.haah.bear.db.HotelDb;
+import com.haah.bear.core.model.db.HotelDb;
 import com.haah.bear.service.HotelService;
 
 @RestController

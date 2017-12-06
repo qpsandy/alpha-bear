@@ -1,4 +1,4 @@
-package com.haah.bear.db;
+package com.haah.bear.core.model.db;
 
 import javax.validation.constraints.Min;
 
