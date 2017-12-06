@@ -54,7 +54,7 @@ public class JwtAuthenticationProvider implements AuthenticationProvider {
         String token = (String)authentication.getCredentials();
         if (!StringUtils.isEmpty(token) && JwtTokenUtils.isTokenExpired(token)){
             logger.info("token is expired，If the user is logined in, then quit.");
-            UserPojo user = userServiceClient.retrieveUserByUsername(JwtTokenUtils.getUsernameFromExpiredToken(token));
+//            UserPojo user = userServiceClient.retrieveUserByUsername(JwtTokenUtils.getUsernameFromExpiredToken(token));
 //            if (user.getUserStatus().equals(LoginStatusEnum.LOGIN.getCode().toString())) {
 //                userServiceClient.changeUserStatus(user.getUsername(), LoginStatusEnum.LOGOUT.getCode().toString());
 //                user.setUserStatus(LoginStatusEnum.LOGOUT.getCode().toString());

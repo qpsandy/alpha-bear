@@ -50,7 +50,6 @@ public class AuthHeaderFilter extends ZuulFilter {
         return true;
     }
 
-    @SuppressWarnings("unchecked")
     @Override
     public Object run() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();

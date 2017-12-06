@@ -90,14 +90,6 @@
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-data-redis</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.session</groupId>
-			<artifactId>spring-session-data-redis</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-redis</artifactId>
 			<version>1.4.6.RELEASE</version>
 		</dependency>
@@ -139,7 +131,12 @@
             <artifactId>mockito-all</artifactId>
             <version>1.10.19</version>
         </dependency>
-		<dependency>
+        <dependency>
+		     <groupId>commons-io</groupId>
+		     <artifactId>commons-io</artifactId>
+		     <version>2.4</version>
+		 </dependency>
+		 <dependency>
 			<groupId>com.haah.bear</groupId>
 			<artifactId>bear-model</artifactId>
 			<version>0.0.1-SNAPSHOT</version>

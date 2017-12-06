@@ -16,7 +16,6 @@ import org.springframework.security.core.Authentication;
 
 import com.alibaba.fastjson.JSONObject;
 import com.haah.bear.core.constants.BizCode;
-import com.haah.bear.core.pojo.UserPojo;
 
 /**
  * @Auther xin.baojian
@@ -26,7 +25,7 @@ import com.haah.bear.core.pojo.UserPojo;
 public class LoginFilterUtils {
 
     public static void successfulAuthentication(HttpServletResponse response, Authentication auth) throws IOException {
-        UserPojo context = JSONObject.parseObject(auth.getPrincipal().toString(), UserPojo.class);
+//        UserPojo context = JSONObject.parseObject(auth.getPrincipal().toString(), UserPojo.class);
         response.setHeader("Content-type", "text/json;charset=UTF-8");
         response.setCharacterEncoding("UTF-8");
         response.addHeader(JwtTokenUtils.HEADER_STRING,
