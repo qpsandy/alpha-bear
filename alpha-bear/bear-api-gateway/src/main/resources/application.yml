@@ -1,12 +1,10 @@
+server:
+  port: ${APP_PORT:10001}
+  
 spring:
   application:
-    name: ${APP_NAME:boss-api-gateway}
+    name: ${APP_NAME:bear-api-gateway}
     instance_id: ${random.value}
-  cloud:
-    config:
-      discovery:
-        enabled: true
-        serviceId: ${CONFIG_SERVICE_NAME:BOSS-CONFIG-SERVER}
   profiles:
     active: ${PROFILE:dev}
   session:
@@ -25,14 +23,13 @@ eureka:
       default: devZone
     preferSameZone: false
     serviceUrl:
-      devZone: ${SERVICE_URL:http://${BOSS_EUREKA_IP:127.0.0.1}:${BOSS_EUREKA_PORT:8761}/${registry.name:eureka}/}
+      devZone: ${SERVICE_URL:http://${BEAR_EUREKA_IP:127.0.0.1}:${BEAR_EUREKA_PORT:8761}/${registry.name:eureka}/}
 
 hystrix:
   threadpool:
     default:
       coreSize: ${HYSTRIX_THREADPOOL_DEFAULT_CORESIZE:2000}
       maxQueueSize: ${HYSTRIX_THREADPOOL_DEFAULT_MAXQUEUESIZE:1000}
-#      queueSizeRejectionThreshold: ${QUEUE_SIZE_REJECTION_THRESHOLD:200}
   command:
     default:
       execution:
@@ -42,6 +39,8 @@ hystrix:
           thread:
             timeoutInMilliseconds: ${HYSTRIX_THREAD_TIMEOUTINMILLISECONDS:900000}
 ribbon:
+  eureka:
+    enabled: true
   ReadTimeout: ${RIBBON_READTIMEOUT:300000}
   ConnectTimeout: ${RIBBON_CONNECTTIMEOUT:300000}
 
@@ -52,4 +51,24 @@ security:
 management:
   security:
     roles: ROLE_ADMIN
+    enabled: ${MANAGEMENT_SECURITY_ENABLED:false}
+
+zuul:
+  routes:
+    bear-service: 
+      path: /service/**
+      serviceId: bear-service
+  sensitiveHeaders:
+  host:
+    maxTotalConnections: ${ZUUL_HOST_MAXTOTALCONNECTIONS:1000}
+    maxPerRouteconnections: ${ZUUL_HOST_MAXPERROUTECONNECTIONS:50}
+
+jwt:
+  token:
+    secret: ${TOKEN_SECRET:THISISSECRET}
+    expiration: ${TOKEN_EXPIRATION:3600}
+
+auth:
+  interface:
+    control: ${AUTH_INTERFACE_CONTROL:false}
 

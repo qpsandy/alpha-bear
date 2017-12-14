@@ -8,6 +8,15 @@
 */
 package com.haah.bear.api.utils;
 
+import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.ExpiredJwtException;
+import io.jsonwebtoken.Jws;
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.MalformedJwtException;
+import io.jsonwebtoken.SignatureAlgorithm;
+import io.jsonwebtoken.SignatureException;
+import io.jsonwebtoken.UnsupportedJwtException;
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
@@ -25,15 +34,6 @@ import org.springframework.stereotype.Component;
 import com.alibaba.fastjson.JSONObject;
 import com.haah.bear.core.pojo.UserPojo;
 
-import io.jsonwebtoken.Claims;
-import io.jsonwebtoken.ExpiredJwtException;
-import io.jsonwebtoken.Jws;
-import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.MalformedJwtException;
-import io.jsonwebtoken.SignatureAlgorithm;
-import io.jsonwebtoken.SignatureException;
-import io.jsonwebtoken.UnsupportedJwtException;
-
 @Component
 public class JwtTokenUtils {
 
@@ -43,18 +43,9 @@ public class JwtTokenUtils {
     public static final String CLAIM_KEY_CREATED = "created";
     public static final String TOKEN_PREFIX = "Bearer";
     public static final String HEADER_STRING = "Authorization";
-
-    /**
-     * 生成token所用秘钥
-     */
-    public static String secret;
-
-    /**
-     * token的有效期，单位为秒
-     */
-    public static int expiration; //过期时长,单位为秒
-
-
+    public static final String SECRET = "BEARSECRET"; //生成token所用秘钥
+    public static final int EXPIRATION = 3600; //token的有效期，单位为秒
+    
     /**
      * 从token中获取用户名
      *
@@ -83,7 +74,7 @@ public class JwtTokenUtils {
     public static String getUsernameFromExpiredToken(String token) {
         String username;
         try {
-            username = Jwts.parser().setSigningKey(secret).parseClaimsJws(token).getBody().getSubject();
+            username = Jwts.parser().setSigningKey(SECRET).parseClaimsJws(token).getBody().getSubject();
         } catch (ExpiredJwtException ex) {
             String context = (String) ex.getClaims().get(CLAIM_KEY_USERNAME);
             UserPojo userPojo = JSONObject.parseObject(context, UserPojo.class);
@@ -123,7 +114,7 @@ public class JwtTokenUtils {
     public static Date getExpirationDateFromToken(String token) {
         Date expiration;
         try {
-            final Claims claims = Jwts.parser().setSigningKey(secret).parseClaimsJws(token).getBody();
+            final Claims claims = Jwts.parser().setSigningKey(SECRET).parseClaimsJws(token).getBody();
             expiration = claims.getExpiration();
         } catch (UnsupportedJwtException | MalformedJwtException | IllegalArgumentException | SignatureException ex) {
             logger.info(String.format("Invalid JWT token, token: %s", token));
@@ -144,7 +135,7 @@ public class JwtTokenUtils {
     public static Claims getClaimsFromToken(String token) {
         Claims claims;
         try {
-            claims = Jwts.parser().setSigningKey(secret).parseClaimsJws(token).getBody();
+            claims = Jwts.parser().setSigningKey(SECRET).parseClaimsJws(token).getBody();
         } catch (UnsupportedJwtException | MalformedJwtException | SignatureException | IllegalArgumentException ex) {
             logger.info(String.format("Invalid JWT token, token: %s", token));
             throw new BadCredentialsException("Invalid JWT token", ex);
@@ -162,7 +153,7 @@ public class JwtTokenUtils {
      * @return 过期日期对象 Date
      */
     public static Date generateExpirationDate() {
-        return new Date(System.currentTimeMillis() + expiration * 1000);
+        return new Date(System.currentTimeMillis() + EXPIRATION * 1000);
     }
 
     /**
@@ -198,7 +189,7 @@ public class JwtTokenUtils {
     public static String generateToken(Map<String, Object> claims) {
         return Jwts.builder().setClaims(claims)
                 .setExpiration(generateExpirationDate())
-                .signWith(SignatureAlgorithm.HS512, secret)
+                .signWith(SignatureAlgorithm.HS512, SECRET)
                 .compact();
     }
 
@@ -251,7 +242,7 @@ public class JwtTokenUtils {
      */
     public static Jws<Claims> validateToken(String token) {
         try {
-            return Jwts.parser().setSigningKey(secret).parseClaimsJws(token);
+            return Jwts.parser().setSigningKey(SECRET).parseClaimsJws(token);
         } catch (UnsupportedJwtException | MalformedJwtException | SignatureException | IllegalArgumentException ex) {
             logger.info(String.format("Invalid JWT token, token: %s", token));
             throw new BadCredentialsException("登录已过期，请重新登录.", ex);
@@ -259,14 +250,5 @@ public class JwtTokenUtils {
             logger.info(String.format("expired JWT token, token: %s", token));
             throw new BadCredentialsException("登录已过期，请重新登录.", ex);
         }
-    }
-
-
-    public String getSecret() {
-        return secret;
-    }
-
-    public int getExpiration() {
-        return expiration;
     }
 }

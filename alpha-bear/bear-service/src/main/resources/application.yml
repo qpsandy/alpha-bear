@@ -3,8 +3,28 @@ server:
 
 spring:
   application:
-    name: bear-service
+    name: ${APP_NAME:bear-service}
+    instance_id: ${random.value}
+  profiles:
+    active: ${PROFILE:dev}
+  session:
+    store-type: none
 
+eureka:
+  instance:
+    metadataMap:
+      instanceId: ${spring.application.name}:${spring.application.instance_id}
+    preferIpAddress: true
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    region: default
+    availabilityZones:
+      default: devZone
+    preferSameZone: false
+    serviceUrl:
+      devZone: ${SERVICE_URL:http://${BEAR_EUREKA_IP:127.0.0.1}:${BEAR_EUREKA_PORT:8761}/${registry.name:eureka}/}
+      
 jdbc:
   server: ${JDBC_SERVER_IP:127.0.0.1}
   port: ${JDBC_SERVER_PORT:3306}

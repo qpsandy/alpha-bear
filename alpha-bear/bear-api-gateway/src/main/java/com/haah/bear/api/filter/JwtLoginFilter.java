@@ -30,7 +30,6 @@ import org.springframework.security.web.authentication.AbstractAuthenticationPro
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 import com.alibaba.fastjson.JSONObject;
-import com.haah.bear.api.utils.ApplicationConfigure;
 import com.haah.bear.api.utils.LoginFilterUtils;
 import com.haah.bear.core.pojo.Result;
 import com.haah.bear.core.pojo.UserPojo;
@@ -79,10 +78,6 @@ public class JwtLoginFilter extends AbstractAuthenticationProcessingFilter {
     }
 
     protected String obtainSslCert(HttpServletRequest request) {
-        String sslCert = request.getHeader(ApplicationConfigure.preAuthHeader);
-        if (sslCert != null) {
-            return sslCert.trim();
-        }
         return null;
     }
 }

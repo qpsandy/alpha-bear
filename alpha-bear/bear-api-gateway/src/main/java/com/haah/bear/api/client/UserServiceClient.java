@@ -20,7 +20,7 @@ import com.haah.bear.core.pojo.UserPojo;
 
 import feign.Headers;
 
-@FeignClient(name = "bear-service" + "${PRODUCER_TAG}", fallback = UserServiceClientFallback.class)
+@FeignClient(name = "bear-service", fallback = UserServiceClientFallback.class)
 public interface UserServiceClient {
 
     @Headers("Connection: close")

@@ -24,13 +24,15 @@ public class UserController extends BaseController {
 		return Result.success();
    	}
 	
-	@RequestMapping(path = "/authentic", method = RequestMethod.POST)
+	@RequestMapping(path = "/validate", method = RequestMethod.POST)
    	public Result authentic(@RequestBody UserPojo user) {
+//		return Result.success(user);
 		return userService.loginAuthenticate(user);
    	}
 
     @RequestMapping(value = "/username", method = RequestMethod.GET)
     public UserPojo retrieveUserByUsername(@RequestParam("username")String username) {
+//    	return new UserPojo();
     	return userService.retrieveUserByUsername(username);
     }
 	

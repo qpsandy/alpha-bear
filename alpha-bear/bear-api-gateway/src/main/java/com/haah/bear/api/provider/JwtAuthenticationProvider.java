@@ -1,15 +1,16 @@
 package com.haah.bear.api.provider;
 
+import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.Jws;
+
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -27,9 +28,6 @@ import com.haah.bear.api.utils.JwtTokenUtils;
 import com.haah.bear.core.constants.BizCode;
 import com.haah.bear.core.pojo.UserPojo;
 
-import io.jsonwebtoken.Claims;
-import io.jsonwebtoken.Jws;
-
 @Component
 public class JwtAuthenticationProvider implements AuthenticationProvider {
 
@@ -38,19 +36,15 @@ public class JwtAuthenticationProvider implements AuthenticationProvider {
     @Autowired
     private UserServiceClient userServiceClient;
 
-    @Autowired
-    private HttpServletRequest request;
+//    @Autowired
+//    private HttpServletRequest request;
 
     @Autowired
     private HttpServletResponse response;
 
-    @Autowired
-    private RedisTemplate<Object, Object> redisTemplate;
-
     @Override
     @SuppressWarnings("unchecked")
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {
-
         String token = (String)authentication.getCredentials();
         if (!StringUtils.isEmpty(token) && JwtTokenUtils.isTokenExpired(token)){
             logger.info("token is expired，If the user is logined in, then quit.");
