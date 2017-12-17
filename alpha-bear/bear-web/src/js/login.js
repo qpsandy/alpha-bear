@@ -27,16 +27,17 @@ $(function() {
 
 		//登录
 		$.ajax({
-			url: '/bear/user/login',
+			url: '/bear/login',
 			type: 'post',
 			dataType: 'json',
 			data: JSON.stringify({"username":username,"password":password}),
 			contentType: 'application/json'
 		})
-		.done(function(data) {
+		.done(function(data,textStatus,request) {
 			console.log(data);
-			if(data.success == true){
+			if(data.succeed == true){
 				$('#errorEmpty').css({'visibility': 'hidden'});
+				localStorage.setItem('Authorization',request.getResponseHeader('Authorization'));
 				window.location.href = './hotelList.html';
 			} else {
 				$('#errorEmpty').css({'visibility': 'visible'}).html("!用户或者密码错误，请重新输入");

@@ -7,6 +7,7 @@
 	    <link rel="stylesheet" type="text/css" href="./css/style.css">
 	    <link rel="stylesheet" type="text/css" href="./css/hotelList.css">
 	    <link rel="stylesheet" type="text/css" href="./css/bootstrap.css">
+	    <link rel="stylesheet" type="text/css" href="./css/paging.css">
 	</head>
 
 	<body>
@@ -37,9 +38,9 @@
 		   
 			</br>		
 			<div class="w3layouts_header_left">
-			    <form action="#" method="post">
-					<input name="Search here" type="search" placeholder="输入酒店名称" required="">
-					<input type="submit" value="">
+			    <form method="post" onsubmit = "searchHotel();">
+					<input id="hotelname"  type="search" placeholder="输入酒店名称" required="">
+					<input type="submit" id="search" value="">
 				</form>
 			</div>
 			
@@ -49,6 +50,8 @@
 				<table id="BMOMSWEB">
 				</table>
 			</div>
+			<div class="box" id="box"></div>
+			</br>
 			<div class="login-footer">酒店查询系统 版权所有 © 2017 由 CIBSB支持</div>
 		</div>
 
@@ -56,6 +59,7 @@
 		<div class="dialog-mask"></div>
 		<script type="text/javascript" src="./js/jquery-1.11.1.min.js"></script>
 		<script type="text/javascript" src="./js/hotelList.js"></script>
+    	<script type="text/javascript" src="./js/paging.js"></script>
 	</body>
 
 </html>

@@ -19,7 +19,7 @@ public class BizCode {
 	public static final BizCode USER_PASSWORD_NULL = new BizCode(100001, "用户名或密码为空！");
 	public static final BizCode USER_NOT_EXIST = new BizCode(100002, "该用户不存在,请联系管理员。");
 	public static final BizCode USER_WRONG_PASSWORD = new BizCode(100003, "密码错误！");
-	public static final BizCode USER_LOGIN_SUCCESS = new BizCode(100004, "登录成功！");
+	public static final BizCode USER_LOGIN_SUCCESS = new BizCode(SUCCESS.code, "登录成功！");
 	public static final BizCode USER_LOGOUT_SUCCESS = new BizCode(100005, "登出成功！");
 	public static final BizCode INVALID_USER_CREDENTIALS = new BizCode(100006, "用户名或密码无效！");
 	public static final BizCode USER_ALREADY_LOGOUT = new BizCode(100007, "用户已登出，请重新登录!");

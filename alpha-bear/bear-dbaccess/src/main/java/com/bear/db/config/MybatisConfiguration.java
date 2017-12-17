@@ -39,8 +39,8 @@ import java.util.Map;
 @Configuration
 @ConditionalOnClass({EnableTransactionManagement.class, EntityManager.class})
 @AutoConfigureAfter({DataBaseConfiguration.class})
-@EntityScan("sse.boss.core.model.db")
-@MapperScan(basePackages = {"sse.boss.**.dao"})
+@EntityScan("com.haah.bear.core.model.db")
+@MapperScan(basePackages = {"com.haah.bear.mapper"})
 public class MybatisConfiguration implements EnvironmentAware {
     private static Logger logger = LoggerFactory.getLogger(MybatisConfiguration.class);
 

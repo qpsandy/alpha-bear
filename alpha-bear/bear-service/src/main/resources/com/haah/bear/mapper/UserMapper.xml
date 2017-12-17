@@ -13,7 +13,7 @@
 		WHERE username = #{username}
 	</select>
 	
-	<select id="authenticate" parameterType="com.haah.bear.core.model.db.UserDb" resultMap="java.lang.Integer">
+	<select id="authenticate" parameterType="com.haah.bear.core.model.db.UserDb" resultType="java.lang.Integer">
 		SELECT count(*) FROM `s_user`
 		WHERE username = #{username} and password = #{password}
 	</select>

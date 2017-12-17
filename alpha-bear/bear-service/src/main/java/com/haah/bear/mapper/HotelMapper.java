@@ -7,7 +7,7 @@ import com.haah.bear.core.model.db.HotelDb;
 
 public interface HotelMapper {
 	
-	List<HotelDb> retrieveHotelByPage(Page<HotelDb> page, HotelDb hd);
+	List<HotelDb> queryHotelByPage(Page<HotelDb> page, HotelDb hd);
 
 	
 }

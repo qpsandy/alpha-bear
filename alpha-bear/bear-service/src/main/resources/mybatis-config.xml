@@ -56,8 +56,8 @@
 
     </settings>
 
-   <!-- <plugins>
-        <plugin interceptor="sse.boss.core.feature.orm.mybatis.PaginationResultSetHandlerInterceptor"/>
-        <plugin interceptor="sse.boss.core.feature.orm.mybatis.PaginationStatementHandlerInterceptor"/>
-    </plugins> -->
+	<plugins>
+        <plugin interceptor="com.bear.db.feature.orm.mybatis.PaginationResultSetHandlerInterceptor"/>
+        <plugin interceptor="com.bear.db.feature.orm.mybatis.PaginationStatementHandlerInterceptor"/>
+    </plugins>
 </configuration>

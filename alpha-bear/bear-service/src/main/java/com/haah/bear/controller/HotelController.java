@@ -37,7 +37,7 @@ public class HotelController {
    	}
 	
 	@RequestMapping(path = "/page", method = RequestMethod.POST)
-   	public List<HotelDb> page(@RequestBody @Valid HotelDb hd) {
+   	public Page<HotelDb> page(@RequestBody @Valid HotelDb hd) {
 		Page<HotelDb> page = new Page<>(hd.getPageNo(), hd.getPageSize());
 		return hotelService.retrieveHotelByPage(page, hd);
    	}

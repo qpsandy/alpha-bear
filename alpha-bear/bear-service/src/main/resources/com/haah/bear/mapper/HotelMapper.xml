@@ -13,7 +13,7 @@
         <result column="updatetime" property="updatetime" jdbcType="TIMESTAMP"/>  
 	</resultMap>
 
-	<select id="retrieveHotelByPage" parameterType="com.haah.bear.core.model.db.HotelDb" resultMap="HotelMap">
+	<select id="queryHotelByPage" parameterType="com.haah.bear.core.model.db.HotelDb" resultMap="HotelMap">
 		SELECT * FROM `hotel`
 		WHERE 1=1
 		<if test="hotelname != null and hotelname !='' ">
