@@ -310,7 +310,7 @@ h3.tittle.why {
     float: left;
     letter-spacing: 1px;
 }
-.w3layouts_header_left input[type="submit"] {
+.w3layouts_header_left input[type="button"] {
     outline: none;
     border: none;
     background: #ffb71c url(../img/search.png)no-repeat 12px 5px;
@@ -1511,7 +1511,7 @@ text-align:center;
 	div#bs-example-navbar-collapse-1 {
 		margin: .5em 0 1em;
 	}
-	.w3layouts_header_left input[type="submit"] {
+	.w3layouts_header_left input[type="button"] {
 		width: 22%;
 	}
 	.textbox h4 {
@@ -1867,7 +1867,7 @@ text-align:center;
 	.w3layouts_header_left {
 		width: 47%;
 	}
-	.w3layouts_header_left input[type="submit"] {
+	.w3layouts_header_left input[type="button"] {
 		background-position: 8px 5px;
 	}
 	.w3l_about_bottom_left_video h4, .w3l_about_bottom_left_video.book-text h4 {
@@ -1903,7 +1903,7 @@ text-align:center;
 	.w3layouts_header p:after {
 		right: 34%;
 	}
-	.w3layouts_header_left input[type="submit"] {
+	.w3layouts_header_left input[type="button"] {
 		background-position: 8px 4px;
 		padding: 7px 0;
 	}
@@ -2009,7 +2009,7 @@ text-align:center;
 	}
 }
 @media(max-width: 414px){
-	.w3layouts_header_left input[type="submit"] {
+	.w3layouts_header_left input[type="button"] {
 		background-position: 4px 4px;
 	}
 	.wthree-about-grids {
@@ -2056,7 +2056,7 @@ text-align:center;
 		text-align: center;
 		float: none;
 	}
-	.w3layouts_header_left input[type="submit"] {
+	.w3layouts_header_left input[type="button"] {
 		background-position: 13px 5px;
 	}
 	.w3l_about_bottom_left_video {
